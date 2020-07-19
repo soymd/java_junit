@@ -9,6 +9,7 @@ public class SampleTest {
 
     @Test
     public void _should_return_Hello_TDD_BootCamp() throws Exception {
+        System.out.println("Hello world!");
         // Setup
         Sample sut = new Sample();
         // Exercise
