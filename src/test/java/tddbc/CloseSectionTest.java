@@ -26,12 +26,22 @@ public class CloseSectionTest {
      */
 
     @Test
-    public void _3と8を渡すと3_8が変える() throws Exception {
+    public void _3と8を渡すと3_8が返る() throws Exception {
         // Setup
         CloseSection closeSection = new CloseSection(3, 8);
         // Exercise
         String actual = closeSection.strigify();
         // Verify
         assertThat(actual, equalTo("[3, 8]"));
+    }
+
+    @Test
+    public void _2と9を渡すと2_9が返る() throws Exception {
+        // Setup
+        CloseSection closeSection = new CloseSection(2, 9);
+        // Exercise
+        String actual = closeSection.strigify();
+        // Verify
+        assertThat(actual, equalTo("[2, 9]"));
     }
 }

@@ -1,15 +1,15 @@
 package tddbc;
 
 public class CloseSection {
-    private int start;
-    private int end;
+    private int bottom;
+    private int top;
 
-    public CloseSection(int start, int end) {
-        this.start = start;
-        this.end = end;
+    public CloseSection(int bottom, int top) {
+        this.bottom = bottom;
+        this.top = top;
     }
 
     public String strigify() {
-        return "[3, 8]";
+        return  String.format("[%s, %s]", bottom, top);
     }
 }
