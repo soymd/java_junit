@@ -3,10 +3,9 @@ package tddbc;
 import org.junit.Test;
 
 import static org.hamcrest.CoreMatchers.equalTo;
-import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
 
-public class SampleTest {
+public class CloseSectionTest {
     /*
     [ ] 整数閉区間を示すクラス
         [ ] 下端点と上端点を持つ(仕様)
@@ -27,9 +26,9 @@ public class SampleTest {
      */
 
     @Test
-    public void 文字列表現を返す() throws Exception {
+    public void _3と8を渡すと3_8が変える() throws Exception {
         // Setup
-        CloseSection closeSection = new CloseSection();
+        CloseSection closeSection = new CloseSection(3, 8);
         // Exercise
         String actual = closeSection.strigify();
         // Verify
