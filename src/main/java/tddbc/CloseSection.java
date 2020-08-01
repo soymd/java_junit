@@ -14,4 +14,8 @@ public class CloseSection {
     public String strigify() {
         return  String.format("[%s, %s]", bottom, top);
     }
+
+    public boolean included(int num) {
+        return true;
+    }
 }

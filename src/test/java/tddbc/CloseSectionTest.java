@@ -7,6 +7,7 @@ import org.junit.rules.ExpectedException;
 import org.junit.runner.RunWith;
 
 import static org.hamcrest.CoreMatchers.equalTo;
+import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
 import static org.junit.Assert.fail;
 
@@ -53,6 +54,14 @@ public class CloseSectionTest {
             // Exercise
             CloseSection closeSection = new CloseSection(9, 2);
         }
+    }
 
+    public void _3_8_で5は含まれる() {
+        // Setup
+        CloseSection closeSection = new CloseSection(3, 8);
+        // Exercise
+        String actual = closeSection.included(5);
+        // Verify
+        assertThat(actual, equalTo(true));
     }
 }
