@@ -66,7 +66,7 @@ public class CloseSectionTest {
         }
 
         @Test
-        public void 下端点3上端点8ときに5は含まれる() {
+        public void 下端点以上かつ上端点以下の整数は閉区間に含まれる() {
             // Exercise
             boolean actual = closeSection.included(5);
             // Verify
@@ -74,7 +74,7 @@ public class CloseSectionTest {
         }
 
         @Test
-        public void 上端点より大きい整数は含まない() {
+        public void 上端点より大きい整数は閉区間に含まれない() {
             // Exercise
             boolean actual = closeSection.included(9);
             // Verify
@@ -82,7 +82,7 @@ public class CloseSectionTest {
         }
 
         @Test
-        public void 下端点より小さい整数は含まない() {
+        public void 下端点より小さい整数は閉区間に含まれない() {
             // Exercise
             boolean actual = closeSection.included(2);
             // Verify
@@ -90,7 +90,7 @@ public class CloseSectionTest {
         }
 
         @Test
-        public void 下端点と同じ整数は含む() {
+        public void 下端点と同じ整数は閉区間に含まれる() {
             // Exercise
             boolean actual = closeSection.included(3);
             // Verify
@@ -98,7 +98,7 @@ public class CloseSectionTest {
         }
 
         @Test
-        public void 上端点と同じ整数は含む() {
+        public void 上端点と同じ整数は閉区間に含まれる() {
             // Exercise
             boolean actual = closeSection.included(8);
             // Verify
