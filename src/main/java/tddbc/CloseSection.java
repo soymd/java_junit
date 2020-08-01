@@ -11,7 +11,7 @@ public class CloseSection {
         this.top = top;
     }
 
-    public String strigify() {
+    public String stringify() {
         return  String.format("[%s, %s]", bottom, top);
     }
 
@@ -20,6 +20,17 @@ public class CloseSection {
     }
 
     public boolean equals(CloseSection target) {
+        return this.stringify().equals(target.stringify());
+    }
+
+    public boolean contains(CloseSection check) {
         return true;
+    }
+
+    public int getBottom(){
+        return this.bottom;
+    }
+    public int getTop(){
+        return this.top;
     }
 }
