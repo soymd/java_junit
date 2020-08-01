@@ -21,9 +21,9 @@ public class CloseSectionTest {
             [x] [2,9   ] -> “[2,9]”
         [x] 上端点より下端点が大きい閉区間は作れない（テスト対象）
             [x] [9,2] -> Exception
-    [ ] 指定した整数が閉区間に含まれているか判定できる
-        [ ] [3.8]で5は含まれる（テスト対象）
-        [ ] [3.8]で9は含まれない（テスト対象）
+    [x] 指定した整数が閉区間に含まれているか判定できる
+        [x] [3.8]で5は含まれる（テスト対象）
+        [x] [3.8]で9は含まれない（テスト対象）
     [ ] 2つの閉区間は等価
         [ ] [3.8]と[3.8]は等価
         [ ] [3.8]と[3,9]は等価ではない
@@ -82,6 +82,40 @@ public class CloseSectionTest {
             boolean actual = closeSection.included(9);
             // Verify
             assertThat(actual, equalTo(false));
+        }
+
+        @Test
+        public void _3_8_で2は含まない() {
+            // Exercise
+            boolean actual = closeSection.included(2);
+            // Verify
+            assertThat(actual, equalTo(false));
+        }
+
+        @Test
+        public void _3_8_で3は含む() {
+            // Exercise
+            boolean actual = closeSection.included(3);
+            // Verify
+            assertThat(actual, equalTo(true));
+        }
+
+        @Test
+        public void _3_8_で8は含む() {
+            // Exercise
+            boolean actual = closeSection.included(8);
+            // Verify
+            assertThat(actual, equalTo(true));
+        }
+    }
+
+    public static class _2つの閉区間は等価 {
+        @Test
+        public void _2つの閉区間は等価である() {
+            CloseSection closeSection = new CloseSection(3, 8);
+            CloseSection check = new CloseSection(3,8);
+            boolean actual = closeSection.equals(check);
+            assertThat(actual, equalTo(true));
         }
     }
 }

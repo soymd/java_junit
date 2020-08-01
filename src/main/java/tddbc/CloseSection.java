@@ -18,4 +18,8 @@ public class CloseSection {
     public boolean included(int num) {
         return bottom <= num && num <= top;
     }
+
+    public boolean equals(CloseSection target) {
+        return true;
+    }
 }
