@@ -5,7 +5,7 @@ public class CloseSection {
     private int top;
 
     public CloseSection(int bottom, int top) {
-        if(bottom > top) throw new IllegalArgumentException("hoge");
+        if(bottom > top) throw new IllegalArgumentException("上端点より下端点が大きい閉区間は作れない");
 
         this.bottom = bottom;
         this.top = top;
