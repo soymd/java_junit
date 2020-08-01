@@ -1,5 +1,6 @@
 package tddbc;
 
+import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.experimental.runners.Enclosed;
@@ -33,10 +34,12 @@ public class CloseSectionTest {
      */
 
     public static class 下端点と上端点を持つ {
+        private CloseSection closeSection;
+
         @Test
         public void 下端と上端を表す文字列を返す() throws Exception {
             // Setup
-            CloseSection closeSection = new CloseSection(3, 8);
+            closeSection = new CloseSection(3, 8);
             // Exercise
             String actual = closeSection.strigify();
             // Verify
@@ -45,6 +48,7 @@ public class CloseSectionTest {
 
         @Rule
         public ExpectedException thrown = ExpectedException.none();
+
         @Test
         public void 上端点より下端点が大きい閉区間は作れない() {
             // Setup
@@ -52,16 +56,33 @@ public class CloseSectionTest {
             thrown.expectMessage("上端点より下端点が大きい閉区間は作れない");
 
             // Exercise
-            CloseSection closeSection = new CloseSection(9, 2);
+            closeSection = new CloseSection(9, 2);
         }
     }
 
-    public void _3_8_で5は含まれる() {
-        // Setup
-        CloseSection closeSection = new CloseSection(3, 8);
-        // Exercise
-        String actual = closeSection.included(5);
-        // Verify
-        assertThat(actual, equalTo(true));
+    public static class 指定した整数が閉区間に含まれているか判定できる {
+        private CloseSection closeSection;
+
+        @Before
+        public void setUp() {
+            closeSection = new CloseSection(3, 8);
+        }
+
+        @Test
+        public void _3_8_で5は含まれる() {
+            // Exercise
+            boolean actual = closeSection.included(5);
+            // Verify
+            assertThat(actual, equalTo(true));
+        }
+
+        @Test
+        public void _3_8_で9は含まない() {
+            // Exercise
+            boolean actual = closeSection.included(9);
+            // Verify
+            assertThat(actual, equalTo(false));
+        }
     }
 }
+

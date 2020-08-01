@@ -16,6 +16,6 @@ public class CloseSection {
     }
 
     public boolean included(int num) {
-        return true;
+        return bottom <= num && num <= top;
     }
 }
