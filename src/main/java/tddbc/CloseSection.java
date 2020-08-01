@@ -5,6 +5,8 @@ public class CloseSection {
     private int top;
 
     public CloseSection(int bottom, int top) {
+        if(bottom > top) throw new IllegalArgumentException("hoge");
+
         this.bottom = bottom;
         this.top = top;
     }

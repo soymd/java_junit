@@ -1,16 +1,19 @@
 package tddbc;
 
+import org.junit.Rule;
 import org.junit.Test;
+import org.junit.rules.ExpectedException;
 
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.junit.Assert.assertThat;
+import static org.junit.Assert.fail;
 
 public class CloseSectionTest {
     /*
-    [ ] 整数閉区間を示すクラス
-        [ ] 下端点と上端点を持つ(仕様)
-        [ ] 文字列表現も返せる（テスト対象）
-            [ ] [3.8   ] -> “[3.8]”
+    [ ] 下端点と上端点を持つ(仕様)
+        [x] 文字列表現も返せる（テスト対象）
+            [x] [3.8   ] -> “[3.8]”
+            [x] [2,9   ] -> “[2,9]”
         [ ] 上端点より下端点が大きい閉区間は作れない（テスト対象）
             [ ] [7,4] -> Exception
     [ ] 指定した整数が閉区間に含まれているか判定できる
@@ -43,5 +46,17 @@ public class CloseSectionTest {
         String actual = closeSection.strigify();
         // Verify
         assertThat(actual, equalTo("[2, 9]"));
+    }
+
+    @Rule
+    public ExpectedException thrown = ExpectedException.none();
+    @Test
+    public void 上端点より下端点が大きい閉区間は作れない() {
+        // Setup
+        thrown.expect(IllegalArgumentException.class);
+        thrown.expectMessage("hoge");
+
+        // Exercise
+        CloseSection closeSection = new CloseSection(9, 2);
     }
 }
