@@ -8,9 +8,7 @@ import org.junit.rules.ExpectedException;
 import org.junit.runner.RunWith;
 
 import static org.hamcrest.CoreMatchers.equalTo;
-import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
-import static org.junit.Assert.fail;
 
 @RunWith(Enclosed.class)
 public class CloseSectionTest {
@@ -68,7 +66,7 @@ public class CloseSectionTest {
         }
 
         @Test
-        public void _3_8_で5は含まれる() {
+        public void 下端点3上端点8ときに5は含まれる() {
             // Exercise
             boolean actual = closeSection.included(5);
             // Verify
@@ -76,7 +74,7 @@ public class CloseSectionTest {
         }
 
         @Test
-        public void _3_8_で9は含まない() {
+        public void 上端点より大きい整数は含まない() {
             // Exercise
             boolean actual = closeSection.included(9);
             // Verify
@@ -84,7 +82,7 @@ public class CloseSectionTest {
         }
 
         @Test
-        public void _3_8_で2は含まない() {
+        public void 下端点より小さい整数は含まない() {
             // Exercise
             boolean actual = closeSection.included(2);
             // Verify
@@ -92,7 +90,7 @@ public class CloseSectionTest {
         }
 
         @Test
-        public void _3_8_で3は含む() {
+        public void 下端点と同じ整数は含む() {
             // Exercise
             boolean actual = closeSection.included(3);
             // Verify
@@ -100,7 +98,7 @@ public class CloseSectionTest {
         }
 
         @Test
-        public void _3_8_で8は含む() {
+        public void 上端点と同じ整数は含む() {
             // Exercise
             boolean actual = closeSection.included(8);
             // Verify
