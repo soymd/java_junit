@@ -24,13 +24,6 @@ public class CloseSection {
     }
 
     public boolean contains(CloseSection check) {
-        return true;
-    }
-
-    public int getBottom(){
-        return this.bottom;
-    }
-    public int getTop(){
-        return this.top;
+        return this.bottom <= check.bottom && this.top >= check.top;
     }
 }

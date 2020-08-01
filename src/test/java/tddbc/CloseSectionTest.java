@@ -27,10 +27,10 @@ public class CloseSectionTest {
     [x] 2つの閉区間は等価
         [x] [3.8]と[3.8]は等価
         [x] [3.8]と[3,9]は等価ではない
-    [ ] 閉区間が閉区間を含む
-        [ ] [3.8]に[3.7]は含まれる
-        [ ] [3.8]に[2,7]は含まない
-        [ ] [3.8]に[4.9]は含まない
+    [x] 閉区間が閉区間を含む
+        [x] [3.8]に[3.7]は含まれる
+        [x] [3.8]に[2,7]は含まない
+        [x] [3.8]に[4.9]は含まない
      */
 
     public static class 下端点と上端点を持つ {
@@ -129,23 +129,33 @@ public class CloseSectionTest {
         }
     }
       public static class 閉区間が閉区間を含む {
+        private CloseSection closeSection;
+
+        @Before
+        public void setup() {
+            closeSection = new CloseSection(3, 8);
+        }
 
         @Test
         public void _3_8は3_7を含む() {
-            CloseSection closeSection = new CloseSection(3,8);
             CloseSection check = new CloseSection(3,7);
             boolean actual = closeSection.contains(check);
             assertThat(actual, equalTo(true));
         }
 
         @Test
-        public void _3_8は2_7を含む() {
-            CloseSection closeSection = new CloseSection(3,8);
+        public void _3_8は2_7を含まない() {
             CloseSection check = new CloseSection(2,7);
             boolean actual = closeSection.contains(check);
             assertThat(actual, equalTo(false));
         }
 
+          @Test
+          public void _3_8は3_9を含まない() {
+              CloseSection check = new CloseSection(3,9);
+              boolean actual = closeSection.contains(check);
+              assertThat(actual, equalTo(false));
+          }
     }
 
 }
