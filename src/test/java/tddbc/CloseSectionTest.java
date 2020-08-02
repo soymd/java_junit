@@ -10,6 +10,7 @@ import org.junit.runner.RunWith;
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.junit.Assert.assertThat;
 
+//JUnit4でテストを構造化する際には下記のアノテーションが必要
 @RunWith(Enclosed.class)
 public class CloseSectionTest {
     /*
@@ -69,7 +70,7 @@ public class CloseSectionTest {
         @Test
         public void 下端点以上かつ上端点以下の整数は閉区間に含まれる() {
             // Exercise
-            boolean actual = closeSection.included(5);
+            boolean actual = closeSection.includes(5);
             // Verify
             assertThat(actual, equalTo(true));
         }
@@ -77,7 +78,7 @@ public class CloseSectionTest {
         @Test
         public void 上端点より大きい整数は閉区間に含まれない() {
             // Exercise
-            boolean actual = closeSection.included(9);
+            boolean actual = closeSection.includes(9);
             // Verify
             assertThat(actual, equalTo(false));
         }
@@ -85,7 +86,7 @@ public class CloseSectionTest {
         @Test
         public void 下端点より小さい整数は閉区間に含まれない() {
             // Exercise
-            boolean actual = closeSection.included(2);
+            boolean actual = closeSection.includes(2);
             // Verify
             assertThat(actual, equalTo(false));
         }
@@ -93,7 +94,7 @@ public class CloseSectionTest {
         @Test
         public void 下端点と同じ整数は閉区間に含まれる() {
             // Exercise
-            boolean actual = closeSection.included(3);
+            boolean actual = closeSection.includes(3);
             // Verify
             assertThat(actual, equalTo(true));
         }
@@ -101,7 +102,7 @@ public class CloseSectionTest {
         @Test
         public void 上端点と同じ整数は閉区間に含まれる() {
             // Exercise
-            boolean actual = closeSection.included(8);
+            boolean actual = closeSection.includes(8);
             // Verify
             assertThat(actual, equalTo(true));
         }
@@ -130,6 +131,7 @@ public class CloseSectionTest {
         }
     }
 
+    //以下はテスト名など未リファクタ。
     public static class 閉区間が閉区間を含む {
         private CloseSection closeSection;
 
