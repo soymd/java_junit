@@ -46,6 +46,7 @@ public class CloseSectionTest {
 
         @Rule
         public ExpectedException thrown = ExpectedException.none();
+
         @Test
         public void 上端点より下端点が大きい閉区間は作れない() {
             // Setup
@@ -108,6 +109,7 @@ public class CloseSectionTest {
 
     public static class _2つの閉区間は等価か比較できる {
         private CloseSection closeSection;
+
         @Before
         public void setUp() {
             closeSection = new CloseSection(3, 8);
@@ -115,18 +117,20 @@ public class CloseSectionTest {
 
         @Test
         public void _2つの閉区間は等価である() {
-            CloseSection check = new CloseSection(3,8);
+            CloseSection check = new CloseSection(3, 8);
             boolean actual = closeSection.equals(check);
             assertThat(actual, equalTo(true));
         }
+
         @Test
         public void _2つの閉区間は等価ではない() {
-            CloseSection check = new CloseSection(2,8);
+            CloseSection check = new CloseSection(2, 8);
             boolean actual = closeSection.equals(check);
             assertThat(actual, equalTo(false));
         }
     }
-      public static class 閉区間が閉区間を含む {
+
+    public static class 閉区間が閉区間を含む {
         private CloseSection closeSection;
 
         @Before
@@ -136,25 +140,23 @@ public class CloseSectionTest {
 
         @Test
         public void _3_8は3_7を含む() {
-            CloseSection check = new CloseSection(3,7);
+            CloseSection check = new CloseSection(3, 7);
             boolean actual = closeSection.contains(check);
             assertThat(actual, equalTo(true));
         }
 
         @Test
         public void _3_8は2_7を含まない() {
-            CloseSection check = new CloseSection(2,7);
+            CloseSection check = new CloseSection(2, 7);
             boolean actual = closeSection.contains(check);
             assertThat(actual, equalTo(false));
         }
 
-          @Test
-          public void _3_8は3_9を含まない() {
-              CloseSection check = new CloseSection(3,9);
-              boolean actual = closeSection.contains(check);
-              assertThat(actual, equalTo(false));
-          }
+        @Test
+        public void _3_8は3_9を含まない() {
+            CloseSection check = new CloseSection(3, 9);
+            boolean actual = closeSection.contains(check);
+            assertThat(actual, equalTo(false));
+        }
     }
-
 }
-
